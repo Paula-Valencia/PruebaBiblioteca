@@ -4,12 +4,20 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
+    use Notifiable;
+
+    // Definición de la relación con Biblioteca
+    public function bibliotecas()
+    {
+        return $this->hasMany(Biblioteca::class);
+    }
 
     /**
      * The attributes that are mass assignable.
